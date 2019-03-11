@@ -165,6 +165,7 @@ display:inline;
 				case 37: // left
 					if(indiceActual>0){
 						$("#pregunta").empty();
+						console.log("Índice: "+indices[indiceActual-1]);
 						pintarPregunta(tabla[indices[--indiceActual]]);
 						$("#contador").text(--contadorPreguntas);
 					}
