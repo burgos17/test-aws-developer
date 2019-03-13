@@ -116,6 +116,9 @@ display:inline;
 			tabla[i].push("<span id='explicacion' style='display:none'>"+$(explicaciones[i]).next()[0].innerHTML+"<span>");
 		}
 		
+		//Eliminamos preguntas duplicadas
+		tabla = Array.from(new Set(tabla));
+		
 		if(!aleatorio){
 			//El array de indices no será aleatorio
 			var a = new Set([...Array(tabla.length).keys()]);
