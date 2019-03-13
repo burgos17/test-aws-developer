@@ -52,7 +52,7 @@ display:inline;
 	var contadorPreguntas = 1;
 	var indices = [];
 	//Matriz con todas las preguntas
-	var tabla = [] // [pregunta, [r1,r2,r3], explicacion]
+	var tabla = new Set(); // [pregunta, [r1,r2,r3], explicacion]
 	
 	//FUNCIONES
 	function pintarPregunta(pregunta){
@@ -89,7 +89,7 @@ display:inline;
 		//Extraemos todas las preguntas para guardarlas en la matriz
 		var preguntas = $("form .question div");
 		for(var i=0; i<preguntas.length; i++){
-			tabla.push([preguntas[i].innerHTML,[]]);
+			tabla.add([preguntas[i].innerHTML,[]]);
 		}
 		
 		//Extraemos todas las respuestas para guardarlas en la matriz
@@ -104,7 +104,7 @@ display:inline;
 				}else{ //Respuesta incorrecta
 					var respuesta = "<span>"+divRespuesta.children()[0].innerHTML+"</span>";
 				}
-				tabla[cont][1].push(respuesta);
+				tabla[cont][1].add(respuesta);
 			}
 			cont++;
 			
@@ -113,7 +113,7 @@ display:inline;
 		//Extraemos todas las explicaciones para guardarlas en la matriz
 		var explicaciones = $("h4");
 		for(var i=0; i<explicaciones.length; i++){
-			tabla[i].push("<span id='explicacion' style='display:none'>"+$(explicaciones[i]).next()[0].innerHTML+"<span>");
+			tabla[i].add("<span id='explicacion' style='display:none'>"+$(explicaciones[i]).next()[0].innerHTML+"<span>");
 		}
 		
 		if(!aleatorio){
